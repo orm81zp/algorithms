@@ -1,8 +1,5 @@
-const {start, end} = require('./helpers')
-
 // selection sort
 const selectionSort = (arr) => {
-  const _start = start()
   for (let i = 0, l = arr.length, k = l-1; i<k; i++) {
     let indexMin = i
 
@@ -17,13 +14,11 @@ const selectionSort = (arr) => {
     }
   }
 
-  end(_start)
   return arr
 }
 
 // insertion sort
 const insertionSort = (arr) => {
-  const _start = start()
   for (let i = 1, l = arr.length; i < l; i++) {
     const current = arr[i]
     let j = i
@@ -36,33 +31,45 @@ const insertionSort = (arr) => {
     arr[j] = current
   }
 
-  end(_start)
   return arr
 }
 
 // bubble sort
 const bubbleSort = (arr) => {
-  const _start = start()
-  for (let i = 0, endI = arr.length - 1; i < endI; i++) {
-    let wasSwap = false
+  const l = arr.length
+  for (let i = l; i > 0; i--) {
+    let useSwap = false;
 
-    for (let j = 0, endJ = endI-i; j< endJ; j++) {
+    for (let j = 0; j<l-1; j++) {
       if (arr[j] > arr[j + 1]) {
-        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
-        wasSwap = true
+        useSwap = true;
+        [arr[j], arr[j+1]] = [arr[j+1], arr[j]]
       }
     }
 
-    if (!wasSwap) {
-      break
+    if (!useSwap) {
+      break;
     }
   }
 
-  end(_start)
   return arr
 }
 
-const arr = [2,0,4,1,6,3,5,7,9,8]
+const qSort = (arr) => {
+  if (arr.length < 2) {
+    return arr
+  }
+
+  const pivot = arr[Math.floor(arr.length/2)]
+  const less = arr.filter(value => value < pivot)
+  const greater = arr.filter(value => value > pivot)
+
+  return [
+    ...qSort(less), pivot, ...qSort(greater)
+  ]
+}
+
+const arr = [2,40,4,123,6,31,5,17,1,8,9]
 
 const selectionSortResult = selectionSort(arr.slice())
 console.log('selectionSortResult', selectionSortResult.toString())
@@ -72,3 +79,6 @@ console.log('insertionSort', insertionSortResult.toString())
 
 const bubbleSortResult = bubbleSort(arr.slice())
 console.log('bubbleSort', bubbleSortResult.toString())
+
+const qSortResult = qSort(arr.slice())
+console.log('qSort', qSortResult.toString())
