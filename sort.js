@@ -62,14 +62,15 @@ const qSort = (arr) => {
 
   const pivot = arr[Math.floor(arr.length/2)]
   const less = arr.filter(value => value < pivot)
+  const equals = arr.filter(value => value === pivot)
   const greater = arr.filter(value => value > pivot)
 
   return [
-    ...qSort(less), pivot, ...qSort(greater)
+    ...qSort(less), ...equals, ...qSort(greater)
   ]
 }
 
-const arr = [2,40,4,123,6,31,5,17,1,8,9]
+const arr = [2,40,4,5,123,6,31,5,17,1,8,9]
 
 const selectionSortResult = selectionSort(arr.slice())
 console.log('selectionSortResult', selectionSortResult.toString())
