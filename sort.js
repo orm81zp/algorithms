@@ -70,16 +70,23 @@ const qSort = (arr) => {
   ]
 }
 
-const arr = [2,40,4,5,123,6,31,5,17,1,8,9]
+module.exports = {
+  bubbleSort,
+  qSort,
+  insertionSort,
+  selectionSort,
+}
 
-const selectionSortResult = selectionSort(arr.slice())
-console.log('selectionSortResult', selectionSortResult.toString())
+// const arr = [2,40,4,5,123,6,31,5,17,1,8,9]
 
-const insertionSortResult = insertionSort(arr.slice())
-console.log('insertionSort', insertionSortResult.toString())
-
-const bubbleSortResult = bubbleSort(arr.slice())
-console.log('bubbleSort', bubbleSortResult.toString())
-
-const qSortResult = qSort(arr.slice())
-console.log('qSort', qSortResult.toString())
+// const selectionSortResult = selectionSort(arr.slice())
+// console.log('selectionSortResult', selectionSortResult.toString())
+//
+// const insertionSortResult = insertionSort(arr.slice())
+// console.log('insertionSort', insertionSortResult.toString())
+//
+// const bubbleSortResult = bubbleSort(arr.slice())
+// console.log('bubbleSort', bubbleSortResult.toString())
+//
+// const qSortResult = qSort(arr.slice())
+// console.log('qSort', qSortResult.toString())
