@@ -55,6 +55,20 @@ const bubbleSort = (arr) => {
   return arr
 }
 
+function bubbleSort2(array) {
+  const arrayLength = array.length;
+
+  for ( let n = 0; n < arrayLength; n++) {
+    for (let i = 0; i < arrayLength - 1 - n; i++) {
+      if (array[i] > array[i + 1]) {
+        [array[i], array[i + 1]] = [array[i + 1], array[i]];
+      }
+    }
+  }
+
+  return array;
+}
+
 const qSort = (arr) => {
   if (arr.length < 2) {
     return arr
